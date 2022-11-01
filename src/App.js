@@ -1,8 +1,9 @@
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
+import { useState } from "react";
 
 function App() {
-  const tasks = [
+  const [tasks, setTasks] = useState([
     {
       id: 1,
       text: "Create task tracker",
@@ -21,7 +22,7 @@ function App() {
       day: "tuesday 1th at 20:00",
       reminder: true,
     },
-  ];
+  ]);
 
   return (
     <div className="App min-h-max m-5 border-4 rounded-md border-slate-700">
