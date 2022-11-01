@@ -1,10 +1,6 @@
 import Button from "./Button";
 
-const Header = ({ title, subtitle }) => {
-  const onClick = () => {
-    console.log("Add task btn clicked");
-  };
-
+const Header = ({ title, subtitle, onAdd, showAdd }) => {
   return (
     <header className="p-2 flex justify-evenly">
       <div>
@@ -12,7 +8,11 @@ const Header = ({ title, subtitle }) => {
         <h2 className="text-center">{subtitle}</h2>
       </div>
 
-      <Button text="Add task" color="bg-slate-700" onClick={onClick} />
+      <Button
+        text={showAdd ? "close" : "Add Task"}
+        color={showAdd ? "bg-red-500" : "bg-slate-700"}
+        onClick={onAdd}
+      />
     </header>
   );
 };

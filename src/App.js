@@ -4,6 +4,7 @@ import { useState } from "react";
 import AddTask from "./components/AddTask";
 
 function App() {
+  const [showAddTask, setShowAddTask] = useState(false);
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -48,8 +49,13 @@ function App() {
 
   return (
     <div className="App min-h-max max-w-xl m-5 sm:mx-auto border-4 rounded-md border-slate-700">
-      <Header title="Task tracker" subtitle="made with react and tailwind" />
-      <AddTask onAdd={addTask} />
+      <Header
+        title="Task tracker"
+        subtitle="made with react and tailwind"
+        onAdd={() => setShowAddTask(!showAddTask)}
+        showAdd={showAddTask}
+      />
+      {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? (
         <Tasks Tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (
