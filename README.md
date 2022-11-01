@@ -40,9 +40,9 @@ You can make a Task stand out visually by toggle it's reminder status by doublec
 
 ## What the app looks like
 
-![Task-tracker](https://github.com/AtlasMountains/task-tracker/blob/main/screenshots/Task%20tracker%201.png)
+![Task-tracker](https://github.com/AtlasMountains/task-tracker/blob/main/screenshots/Task%20tracker%202.png)
 
-![Task-tracker-form](https://github.com/AtlasMountains/task-tracker/blob/main/screenshots/Task%20tracker%202.png)
+![Task-tracker-form](https://github.com/AtlasMountains/task-tracker/blob/main/screenshots/Task%20tracker%201.png)
 
 ## Dependencies
 
