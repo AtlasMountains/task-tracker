@@ -3,6 +3,7 @@ import Tasks from "./components/Tasks";
 import { useState } from "react";
 
 function App() {
+  // delete task
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -24,15 +25,28 @@ function App() {
     },
   ]);
 
+  // toggle reminder
+  const toggleReminder = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      )
+    );
+  };
+
   const deleteTask = (id) => {
-    console.log("delete", id);
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
   return (
     <div className="App min-h-max m-5 border-4 rounded-md border-slate-700">
       <Header title="Task tracker" subtitle="made with react and tailwind" />
 
-      <Tasks Tasks={tasks} onDelete={deleteTask} />
+      {tasks.length > 0 ? (
+        <Tasks Tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+      ) : (
+        <p className="p-3 bg-red-400">no Tasks</p>
+      )}
     </div>
   );
 }
