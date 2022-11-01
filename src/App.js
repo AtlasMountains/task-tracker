@@ -24,11 +24,15 @@ function App() {
     },
   ]);
 
+  const deleteTask = (id) => {
+    console.log("delete", id);
+  };
+
   return (
     <div className="App min-h-max m-5 border-4 rounded-md border-slate-700">
       <Header title="Task tracker" subtitle="made with react and tailwind" />
 
-      <Tasks Tasks={tasks} />
+      <Tasks Tasks={tasks} onDelete={deleteTask} />
     </div>
   );
 }
