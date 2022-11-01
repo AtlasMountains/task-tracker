@@ -1,4 +1,10 @@
+import { useState } from "react";
+
 const AddTask = () => {
+  const [text, setText] = useState("");
+  const [day, setDay] = useState("");
+  const [reminder, setReminder] = useState(false);
+
   return (
     <form className="w-full max-w-xs mx-auto py-2">
       <div className="mb-4">
@@ -12,7 +18,9 @@ const AddTask = () => {
           type="text"
           id="task"
           placeholder="Add Task"
-          className="bg-slate-100 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          className="bg-slate-200 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
 
@@ -27,7 +35,9 @@ const AddTask = () => {
           type="text"
           id="day"
           placeholder="Add day & time"
-          className="bg-slate-100 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          value={day}
+          onChange={(e) => setDay(e.target.value)}
+          className="bg-slate-200 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
 
@@ -38,11 +48,17 @@ const AddTask = () => {
         >
           Set Reminder
         </label>
-        <input type="checkbox" id="check" className="ml-3" />
+        <input
+          type="checkbox"
+          id="check"
+          className="ml-3"
+          value={reminder}
+          onChange={(e) => setReminder(e.currentTarget.checked)}
+        />
       </div>
 
       <input
-        className="bg-green-500 rounded-md p-2 mb-2"
+        className="bg-emerald-600 text-white rounded-md p-2 mb-2"
         type="submit"
         value="Save Task"
       />
