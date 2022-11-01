@@ -4,7 +4,6 @@ import { useState } from "react";
 import AddTask from "./components/AddTask";
 
 function App() {
-  // delete task
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -35,6 +34,14 @@ function App() {
     );
   };
 
+  // Add task
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 1000) + 1;
+    const newTask = { id, ...task };
+    setTasks([...tasks, newTask]);
+  };
+
+  // delete task
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
@@ -42,7 +49,7 @@ function App() {
   return (
     <div className="App min-h-max max-w-xl m-5 sm:mx-auto border-4 rounded-md border-slate-700">
       <Header title="Task tracker" subtitle="made with react and tailwind" />
-      <AddTask />
+      <AddTask onAdd={addTask} />
       {tasks.length > 0 ? (
         <Tasks Tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (

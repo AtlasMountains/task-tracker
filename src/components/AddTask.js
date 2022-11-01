@@ -1,12 +1,27 @@
 import { useState } from "react";
 
-const AddTask = () => {
+const AddTask = ({ onAdd }) => {
   const [text, setText] = useState("");
   const [day, setDay] = useState("");
   const [reminder, setReminder] = useState(false);
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (!text) {
+      alert("Please add task");
+      return;
+    }
+
+    onAdd({ text, day, reminder });
+
+    setText("");
+    setDay("");
+    setReminder(false);
+  };
+
   return (
-    <form className="w-full max-w-xs mx-auto py-2">
+    <form className="w-full max-w-xs mx-auto py-2" onSubmit={onSubmit}>
       <div className="mb-4">
         <label
           htmlFor="task"
@@ -20,7 +35,7 @@ const AddTask = () => {
           placeholder="Add Task"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className="bg-slate-200 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="bg-slate-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
 
@@ -37,7 +52,7 @@ const AddTask = () => {
           placeholder="Add day & time"
           value={day}
           onChange={(e) => setDay(e.target.value)}
-          className="bg-slate-200 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="bg-slate-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
 
@@ -53,6 +68,7 @@ const AddTask = () => {
           id="check"
           className="ml-3"
           value={reminder}
+          checked={reminder}
           onChange={(e) => setReminder(e.currentTarget.checked)}
         />
       </div>
