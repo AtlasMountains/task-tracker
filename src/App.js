@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import { useState } from "react";
+import AddTask from "./components/AddTask";
 
 function App() {
   // delete task
@@ -39,9 +40,9 @@ function App() {
   };
 
   return (
-    <div className="App min-h-max m-5 border-4 rounded-md border-slate-700">
+    <div className="App min-h-max max-w-xl m-5 sm:mx-auto border-4 rounded-md border-slate-700">
       <Header title="Task tracker" subtitle="made with react and tailwind" />
-
+      <AddTask />
       {tasks.length > 0 ? (
         <Tasks Tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (
